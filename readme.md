@@ -14,6 +14,8 @@ For brevity, the browsers that support localStorage are Firefox 3.5, Safari 4, I
 ## Usage
 
 Add `cache.js` to your HTML, I've included a closure compressed `cache.min.js` for use online.
+
+
 When you're in the middle of doing some heavy ajax, you can store the response in cache. 
 
     Cache.set('a unique identifier', {foo: 'bar'});
