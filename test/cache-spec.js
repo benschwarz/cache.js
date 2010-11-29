@@ -45,4 +45,27 @@ describe("Cache", function() {
 		expect(localStorage.getItem("cache.jsfoo")).toBeDefined();
 	});
 
+	it("should call an optional function if value is null", function () {
+		var result = Cache.get('empty with function', function (key) {
+			return 'bacon';
+		});
+		expect(result).toEqual('bacon');
+	});
+
+	it("should not call optional function if value is zero", function () {
+		Cache.set('zero', 0);
+		var result = Cache.get('zero', function (key) {
+			return 1000;
+		});
+		expect(result).toEqual(0);
+	});
+
+	it("should not call optional function if value exists", function () {
+		Cache.set('existing', 'bacon');
+		var result = Cache.get('existing', function (key) {
+			return 'porcupine';
+		});
+		expect(result).toEqual('bacon');
+	});
+
 });

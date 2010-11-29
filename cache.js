@@ -29,6 +29,8 @@ window.Cache = {
 				localStorage.removeItem('cache.js' + key);
 				return null;
 			}
+		} else if (Object.prototype.toString.call(arguments[1]) == '[object Function]') {
+			return arguments[1](key);
 		} else {
 			return null;
 		}
