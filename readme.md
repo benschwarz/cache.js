@@ -51,6 +51,24 @@ Pulling it all together, you might do something like this:
       Cache.set("/url", response);
       // Do something awesome with your responseText    
     });
+    
+### Optional 'get' function if value is null
+
+Often, you'll want to do something if the value is not cached. Pass a function to the `get` function:
+
+    var result = Cache.get('empty key', function(key) {
+      return 'bacon';
+    });
+    // `result` is now 'bacon' since there was no stored value.
+
+For example, you could execute an Ajax call if the local storage is empty. Here's the earlier example with a cleaner style:
+
+    return Cache.get("/url", function(key) {
+      return $.get(key, function (response) {
+        Cache.set(key, response);
+        return response;
+      });
+    });
 
 ## Bugs / Contributions
 
