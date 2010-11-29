@@ -7,7 +7,7 @@ For ajax or heavy computational stuff that could probably be done once a minute,
 
 ## Browser support
 
-Anything that supports localStorage. You could use a [https://gist.github.com/350433](localStorage polyfill) to use it with older browsers. 
+Anything that supports localStorage. You could use a [localStorage polyfill](https://gist.github.com/350433) to use it with older browsers. 
 
 For bervity, the browsers that support localStorage are Firefox 3.5, Safari 4, IE8, Chrome 4+
 
@@ -39,7 +39,7 @@ Or set a global expiry to be used for all caches
     
 ## Bugs / Contributions
 
-* [http://github.com/benschwarz/cache.js/issues](Report a bug)
+* [Report a bug](http://github.com/benschwarz/cache.js/issues)
 * To contribute, or send an idea wither github message me or fork the project. 
 * If you're changing functionality, please perouse the `test/` directory first.
 * You can run the tests on a Mac by running `open -a Safari test/suite.html`, otherwise, just open suite.html in a browser
