@@ -4,7 +4,7 @@ window.Cache = {
 	
 	// Set an item to cache
 	set: function (key, value, expiry) {
-		var expiry = (expiry) ? expiry : this.expiry;
+		expiry = (expiry) ? expiry : this.expiry;
 		
 		var cache_object = JSON.stringify({
 			expiry: (+new Date + expiry),
