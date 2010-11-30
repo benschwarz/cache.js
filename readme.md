@@ -75,7 +75,11 @@ For example, you could execute an Ajax call if the local storage is empty. Here'
 * [Report a bug](http://github.com/benschwarz/cache.js/issues)
 * To contribute, or send an idea wither github message me or fork the project. 
 * If you're changing functionality, please perouse the `test/` directory first.
-* You can run the tests on a Mac by running `open -a Safari test/suite.html`, otherwise, just open suite.html in a browser
+* You can run the tests on a Mac by running `rake test`, otherwise, just open suite.html in a browser
+
+## Build
+
+If you're on a mac, you can run the build process—You'll need the google closure compiler installed, but it will package `cache.js` into `cache.min.js`. Then it'll automagically make a commit describing what you've done. Magic.
 
 ## Hall of fame
 These contributors will be upheld in the record books as those of fine character and dignity. Eternal greatness ensues.
