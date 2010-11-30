@@ -81,3 +81,4 @@ For example, you could execute an Ajax call if the local storage is empty. Here'
 These contributors will be upheld in the record books as those of fine character and dignity. Eternal greatness ensues.
 
 * [Geoffrey Grosenbach](http://github.com/topfunky)
+* [Dmitry Baranovskiy](http://dmitry.baranovskiy.com)
