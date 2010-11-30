@@ -76,3 +76,8 @@ For example, you could execute an Ajax call if the local storage is empty. Here'
 * To contribute, or send an idea wither github message me or fork the project. 
 * If you're changing functionality, please perouse the `test/` directory first.
 * You can run the tests on a Mac by running `open -a Safari test/suite.html`, otherwise, just open suite.html in a browser
+
+## Hall of fame
+These contributors will be upheld in the record books as those of fine character and dignity. Eternal greatness ensues.
+
+* [Geoffrey Grosenbach](http://github.com/topfunky)
