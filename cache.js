@@ -39,5 +39,9 @@ window.Cache = {
 			return nullCallback(key);
 		}
 		return null;
+	},
+	
+	remove: function(key) {
+	  this.storage.removeItem(this.prefix + key);
 	}
 };
