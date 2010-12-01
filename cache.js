@@ -1,8 +1,11 @@
 window.Cache = {
+  
 	// Global cache expiry
 	expiry: 1e4, // 10,000ms
 
 	prefix: 'cache.js -> ',
+	
+	storage: window.localStorage,
 
 	// Set an item to cache
 	set: function (key, value, expiry) {
@@ -13,7 +16,7 @@ window.Cache = {
 			data: value
 		});
 
-		localStorage.setItem(this.prefix + key, cache_object);
+		this.storage.setItem(this.prefix + key, cache_object);
 
 		return value;
 	},
@@ -21,7 +24,7 @@ window.Cache = {
 	// Get an item from cache
 	get: function (key, nullCallback) {
 		key = this.prefix + key;
-		var cache = localStorage.getItem(key);
+		var cache = this.storage.getItem(key);
 
 		if (cache) {
 			var object = JSON.parse(cache);
@@ -29,7 +32,7 @@ window.Cache = {
 			if (object.expiry > new Date) {
 				return object.data;
 			}	else {
-				localStorage.removeItem(key);
+				this.storage.removeItem(key);
 			}
 		}
 		if (typeof nullCallback == 'function') {
