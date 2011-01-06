@@ -100,4 +100,34 @@ describe("Cache", function() {
 	  expect(Cache.get('i_dont_exist')).toBeNull();
 	});
 
+  describe('fetch', function() {
+    describe('when the given cache key is set', function() {
+      it('returns the cached value', function() {
+        Cache.set('bar', 'baz');
+        expect(Cache.fetch('bar')).toEqual('baz');
+      });
+    });
+
+    describe('when the given cache key is not set', function() {
+      it('calls the function, sets the cache key to the resulting value and returns it', function() {
+        expect(Cache.fetch('bar', function() { return 'baz' })).toEqual('baz');
+      });
+
+      describe('when an expiry is passed', function() {
+        it('expires the cache item after the passed expiry', function() {
+          runs(function() {
+            Cache.fetch('baz', function() { return 'qux' }, {expiry: 25});
+            expect(Cache.get('baz')).not.toBeNull();
+          });
+
+          waits(25);
+
+          runs(function() {
+            expect(Cache.get('baz')).toBeNull();
+          });
+        });
+      });
+    });
+  });
+
 });
