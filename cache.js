@@ -43,5 +43,16 @@ window.Cache = {
 	
 	remove: function(key) {
 	  this.storage.removeItem(this.prefix + key);
-	}
+	},
+
+  fetch: function(key, nullCallback, options) {
+    options = options || {};
+    var item = this.get(key)
+
+    if (item) {
+      return item;
+    } else {
+      return this.set(key, nullCallback(), options['expiry']);
+    }
+  }
 };
