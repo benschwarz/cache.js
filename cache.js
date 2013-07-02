@@ -11,7 +11,7 @@
 			expiry = +expiry || +this.expiry || 1e4;
 
 			var cache_object = JSON.stringify({
-				expiry: +new Date + expiry,
+				expiry: +new Date() + expiry,
 				data: value
 			});
 
@@ -28,22 +28,22 @@
 			if (cache) {
 				var object = JSON.parse(cache);
 
-				if (object.expiry > new Date) {
+				if (object.expiry > new Date()) {
 					return object.data;
 				}	else {
 					storage.removeItem(key);
 				}
 			}
-			if (typeof nullCallback == 'function') {
+			if (typeof nullCallback === 'function') {
 				return nullCallback(key);
 			}
 			return null;
 		},
 
 		remove: function(key) {
-		  storage.removeItem(prefix + key);
+			storage.removeItem(prefix + key);
 		}
 	};
 
 	window['Cache'] = Cache;
-}( window ));
+}( this ));
