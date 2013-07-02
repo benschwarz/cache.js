@@ -79,8 +79,7 @@ For example, you could execute an Ajax call if the local storage is empty. Here'
 
 ## Build
 
-If you're on a mac, run `rake build`—You'll need the google closure compiler installed, but it will package `cache.js` into `cache.min.js`. Then it'll automagically make a commit describing what you've done. Magic.
-
+Cache.js uses a grunt based build system. Install node, grunt, cd to cache.js/, install via `npm install` then run the build by running `grunt`.
 
 
 ## Hall of fame
