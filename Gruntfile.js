@@ -52,6 +52,6 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['jshint', 'jasmine:unmin', 'uglify', 'jasmine:min']);
 
-  grunt.registerTask('travis', ['jshint', 'jasmine']);
+  grunt.registerTask('test', ['jshint', 'jasmine']);
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 };
