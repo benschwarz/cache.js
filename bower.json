@@ -1,0 +1,11 @@
+{
+  "name": "cache.js",
+  "version": "1.0.0",
+  "main": "cache.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "test"
+  ]
+}
