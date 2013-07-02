@@ -19,7 +19,7 @@ module.exports = function(grunt) {
     },
 
     jshint: {
-      all: ['cache.js'],
+      all: ['bower.json', 'package.json', 'cache.js'],
       options: {
         "curly": true,
         "eqeqeq": true,
