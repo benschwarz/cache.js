@@ -68,26 +68,6 @@ describe("Cache", function() {
 		expect(result).toEqual('bacon');
 	});
 
-	it("should expose and allow to replace storage object", function() {
-	  var getItemCalled = false, setItemCalled = false;
-
-	  Cache.storage = {
-	    getItem: function() { getItemCalled = true; },
-	    setItem: function() { setItemCalled = true; },
-	    removeItem: function() { }
-	  };
-
-	  Cache.set('foo123', 'bar123');
-	  expect(setItemCalled).toEqual(true);
-
-	  Cache.get('foo123');
-	  expect(setItemCalled).toEqual(true);
-
-	  expect(window.localStorage.getItem(Cache.prefix + 'foo123')).toBeNull();
-
-	  Cache.storage = window.localStorage;
-	});
-
 	it("should allow to remove keys", function() {
 	  Cache.set('foo321', 'bar321');
 	  Cache.set('foo432', 'bar432');
