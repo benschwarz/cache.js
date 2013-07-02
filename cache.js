@@ -1,47 +1,49 @@
-window.Cache = {
+(function ( window ) {
+	var storage = window.localStorage,
+			prefix = 'cache.js -> ',
 
-	// Global cache expiry
-	expiry: 1e4, // 10,000ms
+	Cache = {
+		// Global cache expiry
+		expiry: 1e4, // 10,000ms
 
-	prefix: 'cache.js -> ',
+		// Set an item to cache
+		set: function (key, value, expiry) {
+			expiry = +expiry || +this.expiry || 1e4;
 
-	storage: window.localStorage,
+			var cache_object = JSON.stringify({
+				expiry: +new Date + expiry,
+				data: value
+			});
 
-	// Set an item to cache
-	set: function (key, value, expiry) {
-		expiry = +expiry || +this.expiry || 1e4;
+			storage.setItem(prefix + key, cache_object);
 
-		var cache_object = JSON.stringify({
-			expiry: +new Date + expiry,
-			data: value
-		});
+			return value;
+		},
 
-		this.storage.setItem(this.prefix + key, cache_object);
+		// Get an item from cache
+		get: function (key, nullCallback) {
+			key = prefix + key;
+			var cache = storage.getItem(key);
 
-		return value;
-	},
+			if (cache) {
+				var object = JSON.parse(cache);
 
-	// Get an item from cache
-	get: function (key, nullCallback) {
-		key = this.prefix + key;
-		var cache = this.storage.getItem(key);
-
-		if (cache) {
-			var object = JSON.parse(cache);
-
-			if (object.expiry > new Date) {
-				return object.data;
-			}	else {
-				this.storage.removeItem(key);
+				if (object.expiry > new Date) {
+					return object.data;
+				}	else {
+					storage.removeItem(key);
+				}
 			}
-		}
-		if (typeof nullCallback == 'function') {
-			return nullCallback(key);
-		}
-		return null;
-	},
+			if (typeof nullCallback == 'function') {
+				return nullCallback(key);
+			}
+			return null;
+		},
 
-	remove: function(key) {
-	  this.storage.removeItem(this.prefix + key);
-	}
-};
+		remove: function(key) {
+		  storage.removeItem(prefix + key);
+		}
+	};
+
+	window['Cache'] = Cache;
+}( window ));
