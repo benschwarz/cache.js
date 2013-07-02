@@ -70,7 +70,7 @@ For example, you could execute an Ajax call if the local storage is empty. Here'
       });
     });
 
-## Bugs / Contributions
+## Bugs / Contributions [![Build Status](https://travis-ci.org/benschwarz/cache.js.png?branch=master)](https://travis-ci.org/benschwarz/cache.js)
 
 * [Report a bug](http://github.com/benschwarz/cache.js/issues)
 * To contribute, or send an idea wither github message me or fork the project.
