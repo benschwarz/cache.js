@@ -1,5 +1,5 @@
 describe("Cache", function() {
-	
+
   beforeEach(function() {
     localStorage.clear();
   });
@@ -16,25 +16,25 @@ describe("Cache", function() {
 		Cache.set("key", {setter: "getter"})
 		expect(Cache.get("key")).toEqual({setter: "getter"})
 	});
-	
+
 	it("should return null for an empty key", function () {
 		expect(Cache.get("empty")).toBeNull();
 	})
-	
+
 	it("should expire after 100ms", function () {
 		Cache.set("key", "expire", 100);
 		expect(Cache.get("key")).toEqual("expire");
-		
+
 		setTimeout(function (){
 			expect(Cache.get("key")).toBeNull();
 		}, 100);
 	});
-	
+
 	it("should expire after the default expiry", function () {
 		Cache.expiry = 250;
 		Cache.set("default expiry", "value");
 		expect(Cache.get("default expiry")).toEqual("value");
-		
+
 		setTimeout(function () {
 			expect(Cache.get("default expiry")).toBeNull();
 		}, 500)
@@ -67,35 +67,35 @@ describe("Cache", function() {
 		});
 		expect(result).toEqual('bacon');
 	});
-	
+
 	it("should expose and allow to replace storage object", function() {
 	  var getItemCalled = false, setItemCalled = false;
-	  
+
 	  Cache.storage = {
 	    getItem: function() { getItemCalled = true; },
 	    setItem: function() { setItemCalled = true; },
 	    removeItem: function() { }
 	  };
-	  
+
 	  Cache.set('foo123', 'bar123');
 	  expect(setItemCalled).toEqual(true);
-	  
+
 	  Cache.get('foo123');
 	  expect(setItemCalled).toEqual(true);
-	  
+
 	  expect(window.localStorage.getItem(Cache.prefix + 'foo123')).toBeNull();
-	  
+
 	  Cache.storage = window.localStorage;
 	});
-	
+
 	it("should allow to remove keys", function() {
 	  Cache.set('foo321', 'bar321');
 	  Cache.set('foo432', 'bar432');
-	  
+
 	  Cache.remove('foo321');
 	  expect(Cache.get('foo321')).toBeNull();
 	  expect(Cache.get('foo432')).toEqual('bar432');
-	  
+
 	  Cache.remove('i_dont_exist');
 	  expect(Cache.get('i_dont_exist')).toBeNull();
 	});

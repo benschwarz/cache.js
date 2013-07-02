@@ -1,16 +1,16 @@
 window.Cache = {
-  
+
 	// Global cache expiry
 	expiry: 1e4, // 10,000ms
 
 	prefix: 'cache.js -> ',
-	
+
 	storage: window.localStorage,
 
 	// Set an item to cache
 	set: function (key, value, expiry) {
 		expiry = +expiry || +this.expiry || 1e4;
-		
+
 		var cache_object = JSON.stringify({
 			expiry: +new Date + expiry,
 			data: value
@@ -40,7 +40,7 @@ window.Cache = {
 		}
 		return null;
 	},
-	
+
 	remove: function(key) {
 	  this.storage.removeItem(this.prefix + key);
 	}
