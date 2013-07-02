@@ -4,8 +4,14 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     jasmine: {
-      all: {
+      unmin: {
         src: 'cache.js',
+        options: {
+          specs: 'test/cache-spec.js'
+        }
+      },
+      min: {
+        src: 'cache.min.js',
         options: {
           specs: 'test/cache-spec.js'
         }
@@ -44,7 +50,7 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'jasmine', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'jasmine:unmin', 'uglify', 'jasmine:min']);
 
   grunt.registerTask('travis', ['jshint', 'jasmine']);
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
